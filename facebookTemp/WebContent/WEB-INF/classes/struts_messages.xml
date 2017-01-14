@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.convention.default.parent.package"
+		value="default" />
+
+	<package name="facebook_messages"  extends="struts-default,json-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+			<result-type name="imageResult"
+				class="com.mkyong.image.result.CustomImageBytesResult" />
+
+
+		</result-types>
+
+		
+
+		<!-- ********************************************Nikita's code starts ******************************************************* -->
+		<!-- <action name="displayFullConversation" class="edu.iiitb.facebook.action.MessageAction" 
+			method="displayFullConversation"> <result name="success" type="tiles">basicMessageLayout</result> 
+			</action> -->
+		<action name="basicMessages" class="edu.iiitb.facebook.action.MessageAction"
+			method="loadBasicMessagePage">
+			<result name="success" type="tiles">basicMessageLayout</result>
+		<result name="login">/Login.jsp</result>
+		</action>
+
+		<action name="showConversationWithSelectedUser" class="edu.iiitb.facebook.action.MessageAction"
+			method="loadConversationWithSelectedUser">
+			<result name="success" type="tiles">basicMessageLayout</result>
+		<result name="login">/Login.jsp</result>
+		</action>
+
+		<action name="replyToSelectedConversation" class="edu.iiitb.facebook.action.MessageAction"
+			method="storeReplyToSelectedConversation">
+			<result name="success" type="tiles">basicMessageLayout</result>
+		<result name="login">/Login.jsp</result>
+		</action>
+
+		<action name="createMessage" class="edu.iiitb.facebook.action.MessageAction"
+			method="storeNewMessage">
+			<result name="success" type="tiles">basicMessageLayout</result>
+		<result name="login">/Login.jsp</result>
+		</action>
+
+		<action name="redirectToCreateMessage" class="edu.iiitb.facebook.action.MessageAction"
+			method="redirectToCreateMessage">
+			<result name="success" type="tiles">createMessageLayout</result>
+		<result name="login">/Login.jsp</result>
+		</action>
+
+		<action name="deleteMessage" class="edu.iiitb.facebook.action.MessageAction"
+			method="deleteMessage">
+			<result name="conversation" type="tiles">basicMessageLayout</result>
+			<result name="message" type="tiles">deleteMessageLayout</result>
+			<result name="trial">/trial.jsp</result>
+		<result name="login">/Login.jsp</result>
+		</action>
+
+		<action name="deleteSelectedMessage" class="edu.iiitb.facebook.action.MessageAction"
+			method="deleteSelectedMessage">
+			<result name="success" type="tiles">basicMessageLayout</result>
+		<result name="login">/Login.jsp</result>
+		</action>
+		<!-- ********************************************Nikita's code ends ******************************************************* -->
+
+	</package>
+
+</struts>

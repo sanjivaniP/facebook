@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.convention.default.parent.package"
+		value="default" />
+
+	<package name="facebook_newsFeed" extends="struts-default,json-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+			<result-type name="imageResult"
+				class="com.mkyong.image.result.CustomImageBytesResult" />
+
+
+		</result-types>
+
+		<!-- ****************Sanjivani Patil Start ***************** -->
+		<action name="temp" class="edu.iiitb.facebook.action.TempAction"
+			method="temp">
+			<result name="success" type="tiles">homeLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="newsFeed" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="getPost">
+			<result name="success">/newsFeed/newsFeed.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="insertLike" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="likeAction">
+			<result name="login">/Login.jsp</result>
+			<result name="success" type="json"></result>
+		</action>
+		<action name="deleteLike" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="unlikeAction">
+			<result name="success" type="json"></result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="insertLikeComment" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="likeCommentAction">
+			<result name="success" type="json"></result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="deleteLikeComment" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="unlikeCommentAction">
+			<result name="success" type="json"></result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="deleteComment" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="deleteComment">
+			<result name="success" type="json"></result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="deletePost" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="deletePost">
+			<result name="success" type="json"></result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+		<action name="showLikes" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="showLikesAction">
+			<result name="success">/newsFeed/showLikes.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="showCommentLikes" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="showCommentLikesAction">
+			<result name="success">/newsFeed/showLikes.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+   <action name="submitComment" class="edu.iiitb.facebook.action.NewsFeedAction" method="submitComment">
+            <result name="success" type="json"></result>
+            <result name="login">/Login.jsp</result>
+    </action>
+
+		<action name="olderPost" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="getPost">
+			<result name="success" type="tiles">newsFeedTile</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<!-- ************* Sanjivani Patil Stop ********************************* -->
+
+<action name="ownNews" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="retrieveOwnNews">
+			<result name="success">/newsFeed/ownNews.jsp</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+
+		<action name="ownNews2" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="retrieveOwnNews">
+			<result name="success" type="tiles">ownNews</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+
+		<action name="insertOwnLike" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="likeAction">
+			<result name="login">/Login.jsp</result>
+			<result name="success" type="chain">ownNews2</result>
+
+		</action>
+	<action name="ownOlderPost" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="retrieveOwnNews">
+			<result name="success" type="chain">ownNews2</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		
+		<action name="deleteOwnLike" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="unlikeAction">
+			<result name="success" type="chain">ownNews2</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="insertOwnLikeComment" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="likeCommentAction">
+			<result name="success" type="chain">ownNews2</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="deleteOwnLikeComment" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="unlikeCommentAction">
+			<result name="success" type="chain">ownNews2</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+		<action name="submitOwnComment" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="submitComment">
+			<result name="success" type="json"></result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="submitOwnCommentOnHyperLink" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="submitComment">
+			<result name="success" type="json"></result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="otherOlderPost" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="retrieveOwnNewsForHypelink">
+			<result name="success" type="chain">profileTempAction_hype</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+		<action name="postOnWall" class="edu.iiitb.facebook.action.postOnWallAction"
+			method="postOnWall">
+			<result name="success" type="tiles">hyperlinkProfileLayout</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+	</package>
+
+</struts>

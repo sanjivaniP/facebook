@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ 
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+ 
+
+<!-- Layout for the Profile page of the current user
+ --> 
+ <definition name="profileLayout" template="/layout/profileLayout.jsp">
+        
+        <put-attribute name="header" value="/header_temp.jsp" />
+        <put-attribute name="coverPic" value="/coverPic_temp.jsp" />
+        <put-attribute name="profilePic" value="/profilePic_temp.jsp" />
+        <put-attribute name="about" value="/AboutonProfile_temp.jsp" />
+        <put-attribute name="updateStatus" value="/updateStatus.jsp" />
+        <put-attribute name="ownNews" value="/newsFeed/ownNewsTemp.jsp" />
+        
+        
+</definition>
+
+   <!--  Layout for the click of the friend link on the profile page showing the friends of the3 user -->
+    <definition name="friendLayout" template="/layout/friendLayout.jsp"> 
+    <put-attribute name="header" value="/header_temp.jsp" /> 
+    <put-attribute name="coverPic" value="/coverPic_temp.jsp" /> 
+    <put-attribute name="profilePic" value="/profilePic_temp.jsp" /> 
+    <put-attribute name="viewFriends" value="/viewFriends.jsp" /> 
+    </definition>
+    
+    
+    <definition name="friendLayout_hype" template="/layout/friendLayout_hype.jsp"> 
+    <put-attribute name="header" value="/header_temp.jsp" /> 
+    <put-attribute name="coverPic" value="/coverPic_hype.jsp" />
+        <put-attribute name="profilePic" value="/profilePic_hype.jsp" /> 
+    <put-attribute name="viewFriends" value="/viewFriends.jsp" /> 
+    </definition>
+    
+    
+    
+     <definition name="hyperlinkProfileLayout" template="/layout/profileLayout_hype.jsp">
+       
+       <put-attribute name="header" value="/header_temp.jsp" />
+        <put-attribute name="coverPic" value="/coverPic_hype.jsp" />
+        <put-attribute name="profilePic" value="/profilePic_hype.jsp" />
+       <!--  <put-attribute name="profileHeader" value="/profileHeader_hype.jsp" /> -->
+        <put-attribute name="about" value="/AboutonProfile_hype.jsp" />
+        
+        <put-attribute name="updateStatus" value="/postOnWall.jsp" />
+        <put-attribute name="ownNews" value="/newsFeed/ownNews_hype.jsp" />
+        
+        
+    </definition>
+    
+   <!--  <definition name="viewFriends" template="/viewFriendsDiv.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header1" value="/header1.jsp" />
+        <put-attribute name="header2" value="/header_temp.jsp" />
+        <put-attribute name="coverPic" value="/coverPic_temp.jsp" />
+        <put-attribute name="profileHeader" value="/profileHeader.jsp" />
+         <put-attribute name="friendsWord" value="/friendsWord.jsp" />
+        <put-attribute name="body" value="/viewFriends.jsp" /> 
+        
+        
+     </definition>
+     
+     <definition name="viewFriends_hype" template="/viewFriendsDiv.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header1" value="/header1.jsp" />
+        <put-attribute name="header2" value="/header_temp.jsp" />
+        <put-attribute name="coverPic" value="/coverPic_temp.jsp" />
+        <put-attribute name="profileHeader" value="/profileHeader_hype.jsp" />
+         <put-attribute name="friendsWord" value="/friendsWord.jsp" />
+        <put-attribute name="body" value="/viewFriends.jsp" />
+        
+        
+     </definition> -->
+    
+ 
+               <definition name="aboutLayout" template="layout/aboutLayout.jsp">
+            <put-attribute name="header" value="/header_temp.jsp" />
+        	<put-attribute name="coverPic" value="/coverPic_temp.jsp" />
+        	<put-attribute name="profilePic" value="/profilePic_temp.jsp" />
+        	<put-attribute name="workandEducation" value="/workandEducation_temp.jsp" />
+        	<put-attribute name="relationship" value="/relationshipStatus.jsp" />
+        	<put-attribute name="places" value="/placeLived_temp.jsp" />
+        	<put-attribute name="basic" value="/basicInfo_temp.jsp" />
+        	<put-attribute name="contact" value="/contactInfo_temp.jsp" />
+            </definition>
+            
+            
+             <definition name="friendLayout" template="layout/friendLayout.jsp">
+            <put-attribute name="header" value="/header_temp.jsp" />
+        	<put-attribute name="coverPic" value="/coverPic_temp.jsp" />
+        	<put-attribute name="profilePic" value="/profilePic_temp.jsp" />
+        	<put-attribute name="viewFriends" value="/viewFriends.jsp" />
+        	
+            </definition>
+            
+            <definition name="aboutLayout_hype" template="/layout/aboutLayoutHype.jsp">
+            <put-attribute name="header" value="/header_temp.jsp" />
+        <put-attribute name="coverPic" value="/coverPic_hype.jsp" />
+        <put-attribute name="profilePic" value="/profilePic_hype.jsp" />
+	        <put-attribute name="workandEducation" value="/workandEducation_hype.jsp" />
+        	<!-- <put-attribute name="relationship" value="/relationshipStatus.jsp" /> -->
+        	<put-attribute name="places" value="/placeLived_hype.jsp" />
+        	<put-attribute name="basic" value="/basicInfo_hype.jsp" />
+        	<put-attribute name="contact" value="/contactInfo_hype.jsp" />
+            </definition>
+            
+            
+            
+        <definition name="baseLayout" template="/BaseLayout.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header1" value="/header1.jsp" />
+        <put-attribute name="header2" value="/header_temp.jsp" />
+        <put-attribute name="body" value="/index2.jsp" />
+        
+    </definition>
+       
+      <!-- 	<definition name="homeLayout" template="/layout/homeLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header1" value="/header1.jsp" />
+		<put-attribute name="header2" value="/header_temp.jsp" />
+		<put-attribute name="navMenu" value="/nav.jsp" />
+		<put-attribute name="rightNavMenu" value="/birthday/birthdayNotification.jsp" />
+		<put-attribute name="newsFeed" value="/newsFeed_temp.jsp" />
+		<put-attribute name="activityLog" value="/activityLog.jsp" />
+
+	</definition> -->
+       <!-- **********************shubham*****Code need to update start****************** -->
+        <definition name="editGender" extends="aboutLayout">
+         <put-attribute name="basic" value="/editGender.jsp" />   
+ </definition>
+ 
+ <definition name="editBirthDate" extends="aboutLayout">
+         <put-attribute name="basic" value="/editBirthDate.jsp" />   
+ </definition>
+ 
+  <definition name="editInterests" extends="aboutLayout">
+         <put-attribute name="basic" value="/editInterests.jsp" />   
+ </definition>
+ 
+ <definition name="editPhone" extends="aboutLayout">
+         <put-attribute name="contact" value="/editPhone.jsp" />   
+         
+ </definition>
+ 
+ <definition name="editEducation" extends="aboutLayout">
+		<put-attribute name="workandEducation" value="/editEducation.jsp" />
+	</definition>
+	<definition name="editWork" extends="aboutLayout">
+		<put-attribute name="workandEducation" value="/editWork.jsp" />
+	</definition>
+       <!-- **********************shubham*****Code need to update start****************** -->
+      
+      
+        <definition name="addGender" extends="aboutLayout">
+         <put-attribute name="basic" value="/addGender.jsp" />   
+ </definition>
+ 
+ <definition name="addInterestedIn" extends="aboutLayout">
+         <put-attribute name="basic" value="/addInterestedIn.jsp" />   
+ </definition>
+ 
+ <definition name="addReligion" extends="aboutLayout">
+         <put-attribute name="basic" value="/addReligion.jsp" />   
+ </definition>
+ 
+ <definition name="addHomeTown" extends="aboutLayout">
+         <put-attribute name="places" value="/addHomeTown.jsp" />   
+ </definition>
+ 
+ <definition name="addCurrentCity" extends="aboutLayout">
+         <put-attribute name="places" value="/addCurrentCity.jsp" />   
+ </definition>
+ 
+ <definition name="addPhoneNumber" extends="aboutLayout">
+         <put-attribute name="contact" value="/addPhoneNumber.jsp" />   
+ </definition>
+ 
+ <definition name="addRelStatus" extends="friendLayout">
+          <put-attribute name="viewFriends" value="/addRelStatus.jsp" />   
+ </definition>
+ 
+       
+    
+<definition name="newsFeed" extends="fbLayout">
+         <put-attribute name="body" value="/newsFeed/newsFeed.jsp" />   
+ </definition>
+	<definition name="newsFeedTile" extends="fbLayout">
+		<put-attribute name="body" value="/newsFeed/newsFeed.jsp" />
+	</definition>
+<definition name="ownNews" extends="profileLayout">
+         <put-attribute name="body" value="/newsFeed/newsFeed.jsp" />   
+ </definition>
+
+  
+
+<!-- ********************************Shubham Code Start ***************************************-->
+     
+    
+     <definition name="editLocation" extends="aboutLayout">
+         <put-attribute name="places" value="/editLocation.jsp" />   
+ </definition>
+ 
+     <definition name="editReligion" extends="aboutLayout">
+         <put-attribute name="basic" value="/editReligion.jsp" />   
+ </definition>
+    	<!-- ********************************Shubham Code End ***************************************-->
+  
+  
+     <!-- ********************************Nikita Code Start ***************************************-->
+<definition name="basicMessageLayout" template="/layout/basicMessageLayout.jsp">
+		<put-attribute name="header" value="/header_temp.jsp" />
+		<put-attribute name="leftPane"
+			value="/messages/basicMessagesLeftPane.jsp" />
+		<put-attribute name="rightPane"
+			value="/messages/basicMessagesRightPane.jsp" />
+
+	</definition> 
+ <!-- ********************************Nikita Code End ***************************************-->   
+  
+    
+         <definition name="fbLayout" template="/layout/homeLayout.jsp">
+        <put-attribute name="header" value="/header_temp.jsp" />
+        <put-attribute name="leftNav" value="/nav_temp.jsp" />
+        <put-attribute name="newsFeed" value="/newsFeed/newsFeed_temp.jsp" />
+        <put-attribute name="rightNavMenu" value="/birthday/birthday_temp.jsp" />
+		
+        
+    </definition>
+    
+    <definition name="search" template="/layout/searchLayout.jsp">
+        <put-attribute name="header" value="/header_temp.jsp" />
+        <put-attribute name="leftNav" value="/nav_temp.jsp" />
+         <put-attribute name="search" value="/search/searchResult.jsp" />
+        
+    </definition>
+<definition name="pollLayout" extends="fbLayout"> 
+        <put-attribute name="newsFeed" value="/pollTemp.jsp" />
+              
+    </definition>
+ 
+  
+  
+   <definition name="noSearchResult" extends="search"> 
+        <put-attribute name="search" value="/search/noSearchResult.jsp" />
+              
+    </definition>
+
+ <definition name="pollLayout" extends="fbLayout"> 
+        <put-attribute name="newsFeed" value="/pollTemp.jsp" />
+              
+    </definition>
+    
+    <definition name="pollDisplay" extends="fbLayout"> 
+        <put-attribute name="newsFeed" value="/pollDisplay.jsp" />
+              
+    </definition>
+ 
+   
+    
+    <definition name="eventsLayout" template="/layout/eventsLayout.jsp">
+		<put-attribute name="header" value="/header_temp.jsp" />
+		<put-attribute name="eventList" value="/events/eventList_temp.jsp" />
+
+	</definition>
+	<definition name="eventsCreateLayout" template="/layout/eventsLayout.jsp">
+		<put-attribute name="header" value="/header_temp.jsp" />
+		<put-attribute name="eventList" value="/events/eventCreate_temp.jsp" />
+
+	</definition>
+
+	<definition name="eventPageLayout" template="/layout/eventPageLayout.jsp">
+		<put-attribute name="header" value="/header_temp.jsp" />
+		<put-attribute name="leftEventNav" value="/navLeftEvent_temp.jsp" />
+		<put-attribute name="eventPage" value="/events/eventPage_temp.jsp" />
+
+	</definition>
+    
+    	<definition name="createMessageLayout" extends="basicMessageLayout">
+		<put-attribute name="rightPane" value="/messages/createMessage.jsp" />
+	</definition>
+
+
+	<definition name="deleteMessageLayout" extends="basicMessageLayout">
+		<put-attribute name="rightPane" value="/messages/deleteMessage.jsp" />
+</definition>		
+
+   	<definition name="picLayout" template="/layout/picLayout.jsp">
+		<put-attribute name="header" value="/header_temp.jsp" />
+		<put-attribute name="pics" value="/viewPics_temp.jsp" />
+
+	</definition>
+    
+    
+    
+    
+    <definition name="olderOwnPost" extends="profileLayout">
+		<put-attribute name="ownNews" value="/newsFeed/ownNews.jsp" />
+
+	</definition>
+    
+</tiles-definitions>

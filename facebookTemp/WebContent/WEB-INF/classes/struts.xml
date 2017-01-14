@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<include file="struts_events.xml"></include>
+	<include file="struts_newsFeed.xml"></include>
+	<include file="struts_messages.xml"></include>
+	<include file="struts_about.xml"></include>
+
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.convention.default.parent.package"
+		value="default" />
+
+	<package name="facebook" extends="struts-default,json-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+			<result-type name="imageResult"
+				class="com.mkyong.image.result.CustomImageBytesResult" />
+
+
+		</result-types>
+
+		<action name="profileTempAction" class="edu.iiitb.facebook.action.statusAction"
+			method="tempReturnSuccess">
+			<result name="success" type="tiles">profileLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+
+
+
+		<action name="submitPoll" class="edu.iiitb.facebook.action.PollPostAction"
+			method="execute">
+			<result name="success" type="chain">displayPolls</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="profileTempAction_hype" class="edu.iiitb.facebook.action.statusAction"
+			method="tempReturnSuccess1">
+			<result name="profileHype" type="tiles">hyperlinkProfileLayout</result>
+			<result name="profile" type="tiles">profileLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+
+		<action name="aboutOnProfile" class="edu.iiitb.facebook.action.AboutOnProfileAction"
+			method="retreiveAboutInfo">
+			<result name="success">/AboutonProfile.jsp</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="aboutOnProfile_hype" class="edu.iiitb.facebook.action.AboutOnProfileAction"
+			method="retreiveAboutInfoForHyperlink">
+			<result name="success">/AboutonProfile.jsp</result>
+			<result name="login">/Login.jsp</result>
+
+		</action>
+
+
+
+		<action name="login" class="edu.iiitb.facebook.action.LoginAction"
+			method="doLogin">
+			<result name="success" type="tiles">fbLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+
+		<action name="directLogin" class="edu.iiitb.facebook.action.LoginAction"
+			method="directLogin">
+			<result name="success" type="tiles">fbLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="logout" class="edu.iiitb.facebook.action.LoginAction"
+			method="logout">
+			<result name="success">/Login.jsp</result>
+
+		</action>
+
+
+		<action name="signUp" class="edu.iiitb.facebook.action.SignUp"
+			method="signUp">
+			<result name="success">/fillOutInfo.jsp</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+		<action name="header" class="edu.iiitb.facebook.action.HeaderAction"
+			method="execute">
+			<result name="success">/header.jsp</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+
+
+		<action name="profilePic" class="edu.iiitb.facebook.action.HeaderAction"
+			method="execute">
+			<result name="success">/profilePic.jsp</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+
+		<action name="profilePic_hype" class="edu.iiitb.facebook.action.HeaderAction"
+			method="executeForHyperlink">
+			<result name="success">/profilePic.jsp</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+
+		<action name="nav" class="edu.iiitb.facebook.action.HeaderAction"
+			method="execute">
+			<result name="success">/nav.jsp</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+		<action name="fillOutInfo" class="edu.iiitb.facebook.action.SignUp"
+			method="fillOutInfo">
+			<result name="success" type="tiles">fbLayout</result>
+			<result name="failure">/fillOutInfo.jsp</result>
+		</action>
+		<action name="sendCode" class="edu.iiitb.facebook.action.ForgotPasswordAction"
+			method="sendCode">
+			<result name="success">/fillOutInfo.jsp</result>
+		</action>
+
+		<action name="About" class="edu.iiitb.facebook.action.statusAction"
+			method="tempReturnSuccess">
+			<result name="success" type="tiles">aboutLayout</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+		<action name="updateStatus" class="edu.iiitb.facebook.action.statusAction"
+			method="updateStatus">
+			<result name="success" type="tiles">profileLayout</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+		<!-- <action name="ownNews" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="retrieveOwnNews">
+			<result name="success">/ownNews.jsp</result>
+			<result name="failure">/ownNews.jsp</result>
+		</action>
+ -->
+		<action name="ownNews_hype" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="retrieveOwnNewsForHypelink">
+			<result name="success">/newsFeed/ownNews.jsp</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+<!--
+		<action name="ownNews2" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="retrieveOwnNews">
+			<result name="success" type="tiles">ownNews</result>
+			<result name="failure">/ownNews.jsp</result>
+		</action>
+
+		<action name="insertOwnLike" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="likeAction">
+			<result name="login">/Login.jsp</result>
+			<result name="success" type="chain">ownNews2</result>
+
+		</action>
+		<action name="deleteOwnLike" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="unlikeAction">
+			<result name="success" type="chain">ownNews2</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="insertOwnLikeComment" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="likeCommentAction">
+			<result name="success" type="chain">ownNews2</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="deleteOwnLikeComment" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="unlikeCommentAction">
+			<result name="success" type="chain">ownNews2</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+			<action name="submitOwnComment" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="submitComment">
+			<result name="success" type="json"></result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		
+		<action name="submitOwnCommentOnHyperLink" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="submitComment">
+			<result name="success" type="json"></result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+
+		<action name="displayFullConversation" class="edu.iiitb.facebook.action.MessageAction"
+			method="displayFullConversation">
+			<result name="success" type="tiles">basicMessageLayout</result>
+		</action>
+
+ -->		<action name="sendFriendRequest" method="execute"
+			class="edu.iiitb.facebook.action.SendFriendRequest">
+			<result name="success" type="chain">Search</result>
+			<result name="noResult" type="tiles">noSearchResult</result>
+
+		</action>
+
+
+
+		<action name="image" class="edu.iiitb.facebook.action.ImageAction"
+			method="execute">
+			<result name="success" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">imageStream</param>
+				<param name="contentDisposition">image.jpeg</param>
+				<param name="bufferSize">1024</param>
+			</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+
+		<action name="saveWork" class="edu.iiitb.facebook.action.workAndEducation"
+			method="storeWork">
+			<result name="success" type="tiles">aboutLayout</result>
+			<result name="failure" type="tiles">aboutLayout</result>
+
+		</action>
+		<action name="saveEducation" class="edu.iiitb.facebook.action.workAndEducation"
+			method="storeEducation">
+			<result name="success" type="tiles">aboutLayout</result>
+			<result name="failure" type="tiles">aboutLayout</result>
+
+		</action>
+
+
+		<action name="getWorkAndEducation" class="edu.iiitb.facebook.action.workAndEducation"
+			method="retreiveWorkAndEducation">
+			<result name="success">/workandEducation.jsp</result>
+
+		</action>
+
+		<action name="getWorkAndEducation_hype" class="edu.iiitb.facebook.action.workAndEducation"
+			method="retreiveWorkAndEducationForHyperlink">
+			<result name="success">/workandEducation.jsp</result>
+
+		</action>
+
+
+
+		<action name="addPlace" class="edu.iiitb.facebook.action.placeAction"
+			method="addNewPlace">
+			<result name="success" type="tiles">aboutLayout</result>
+
+		</action>
+
+
+		<action name="getplaces" class="edu.iiitb.facebook.action.placeAction"
+			method="retrievePlaces">
+			<result name="success">/placesLived.jsp</result>
+
+		</action>
+
+		<action name="getplaces_hype" class="edu.iiitb.facebook.action.placeAction"
+			method="retrievePlacesForHyperlink">
+			<result name="success">/placesLivedHype.jsp</result>
+
+		</action>
+
+<!-- 		<action name="newsFeed" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="getPost">
+			<result name="success">/newsFeed/newsFeed.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="insertLike" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="likeAction">
+			<result name="login">/Login.jsp</result>
+			<result name="success" type="json"></result>
+		</action>
+		<action name="deleteLike" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="unlikeAction">
+			<result name="success" type="json"></result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="insertLikeComment" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="likeCommentAction">
+			<result name="success" type="json"></result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="deleteLikeComment" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="unlikeCommentAction">
+			<result name="success" type="json"></result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+		<action name="showLikes" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="showLikesAction">
+			<result name="success">showLikes.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="showCommentLikes" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="showCommentLikesAction">
+			<result name="success">showLikes.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="submitComment" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="submitComment">
+			<result name="success" type="chain">newsFeed</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+ -->		<action name="basicInfo" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="retrieveBasicInfo">
+			<result name="success">/basicInfo.jsp</result>
+
+		</action>
+
+
+
+		<action name="contactInfo" class="edu.iiitb.facebook.action.contactInfoAction"
+			method="retrieveContactInfo">
+			<result name="success">/contactInfo.jsp</result>
+
+		</action>
+
+		<action name="basicInfo_hype" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="retrieveBasicInfoForHyperlink">
+			<result name="success">/basicInfo.jsp</result>
+
+		</action>
+
+
+
+		<action name="contactInfo_hype" class="edu.iiitb.facebook.action.contactInfoAction"
+			method="retrieveContactInfoForHyperlink">
+			<result name="success">/contactInfo.jsp</result>
+
+		</action>
+
+
+
+
+
+
+		<action name="relStatusList" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="retrieveRelStatusList">
+			<result name="success" type="tiles">addRelStatus</result>
+
+		</action>
+	<action name="deleteReligion" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="deleteReligion">
+			<result name="success" type="tiles">aboutLayout</result>
+
+		</action>
+		<action name="saveRelStatus" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="saveRelStatus">
+			<result name="success" type="tiles">aboutLayout</result>
+
+		</action>
+
+		<action name="gender_temp" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="gender_temp">
+			<result name="gender" type="tiles">addGender</result>
+			<result name="interests" type="tiles">addInterestedIn</result>
+			<result name="religion" type="tiles">addReligion</result>
+			<result name="phoneNumber" type="tiles">addPhoneNumber</result>
+			<result name="homeTown" type="tiles">addHomeTown</result>
+			<result name="currentCity" type="tiles">addCurrentCity</result>
+
+		</action>
+
+		<action name="savePhoneNumber" class="edu.iiitb.facebook.action.contactInfoAction"
+			method="savePhoneNumber">
+			<result name="success" type="tiles">aboutLayout</result>
+
+		</action>
+<action name="deletePhone" class="edu.iiitb.facebook.action.contactInfoAction"
+			method="deletePhoneNumber">
+			<result name="success" type="tiles">aboutLayout</result>
+
+		</action>
+		<action name="saveHomeTown" class="edu.iiitb.facebook.action.placeAction"
+			method="saveHomeTown">
+			<result name="success" type="tiles">aboutLayout</result>
+
+		</action>
+
+		<action name="saveCurrentCity" class="edu.iiitb.facebook.action.placeAction"
+			method="saveCurrentCity">
+			<result name="success" type="tiles">aboutLayout</result>
+
+		</action>
+
+		<action name="saveGender" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="saveGender">
+			<result name="success" type="tiles">aboutLayout</result>
+
+		</action>
+
+		<action name="saveInterestedIn" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="saveInterestedIn">
+			<result name="success" type="tiles">aboutLayout</result>
+
+		</action>
+
+		<action name="saveReligion" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="saveReligion">
+			<result name="success" type="tiles">aboutLayout</result>
+
+		</action>
+
+		<action name="temp" class="edu.iiitb.facebook.action.TempAction"
+			method="temp">
+			<result name="success" type="tiles">homeLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="Search" class="edu.iiitb.facebook.action.SearchAction"
+			method="temp">
+			<result name="success" type="tiles">search</result>
+			<result name="noResult" type="tiles">noSearchResult</result>
+		</action>
+		<action name="getSearch" class="edu.iiitb.facebook.action.SearchAction"
+			method="temp1">
+			<result name="success" type="json"></result>
+		</action>
+		
+		<action name="getSearchForMessage" class="edu.iiitb.facebook.action.SearchAction"
+			method="temp2">
+			<result name="success" type="json"></result>
+		</action>
+		
+		<action name="getSearchForTagging" class="edu.iiitb.facebook.action.SearchAction"
+			method="temp3">
+			<result name="success" type="json"></result>
+		</action>		
+
+
+
+
+
+		<!-- ********************************Shubham Code Start *************************************** -->
+
+
+
+		<action name="home1" class="edu.iiitb.facebook.action.TempAction"
+			method="temp">
+			<result name="success" type="tiles">fbLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+
+
+		<action name="loadCoverPic" class="edu.iiitb.facebook.action.picAction"
+			method="loadCoverPic">
+			<result name="success">/coverPic.jsp</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="loadCoverPic_hype" class="edu.iiitb.facebook.action.picAction"
+			method="loadCoverPicForHyperlink">
+			<result name="success">/coverPic.jsp</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+
+
+
+
+
+		<!-- **********************************Shubham code End********************************* -->
+
+
+		<!-- ********************************Karodiya Code Start *************************************** -->
+
+		<action name="editCoverPic" class="edu.iiitb.facebook.action.picAction"
+			method="editCoverPic">
+			<result name="success" type="tiles">aboutLayout</result>
+
+
+		</action>
+		<action name="editProfilePic" class="edu.iiitb.facebook.action.picAction"
+			method="editProfilePic">
+			<result name="success" type="tiles">aboutLayout</result>
+		</action>
+		<action name="uploadPhoto" class="edu.iiitb.facebook.action.picAction"
+			method="uploadPhoto">
+			<result name="success" type="tiles">fbLayout</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+		<action name="uploadAlbum" class="edu.iiitb.facebook.action.picAction"
+			method="uploadAlbum">
+			<result name="success" type="tiles">fbLayout</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+
+		<!--********************************Karodiya Code END *************************************** -->
+
+
+
+
+
+
+		<action name="getFriends" class="edu.iiitb.facebook.action.SendFriendRequest"
+			method="retrieveFriends">
+			<result name="success" type="tiles">friendLayout</result>
+		</action>
+
+	<!-- 
+	
+	EXAM CODE 1
+		<action name="fanclub" class="edu.iiitb.facebook.action.SendFriendRequest"
+			method="retrieveFriends3">
+			<result name="success" type="tiles">friendLayout</result>
+		</action>
+ -->
+
+
+		<action name="home" class="edu.iiitb.facebook.action.TempAction"
+			method="temp">
+			<result name="success" type="tiles">homeLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+
+		<action name="postOnWall" class="edu.iiitb.facebook.action.postOnWallAction"
+			method="postOnWall">
+			<result name="success" type="tiles">hyperlinkProfileLayout</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+		<action name="getFriends_hype" class="edu.iiitb.facebook.action.SendFriendRequest"
+			method="retrieveFriendsForHyperlink">
+			<result name="success" type="tiles">friendLayout_hype</result>
+		</action>
+
+		<action name="createpoll" class="edu.iiitb.facebook.action.PollAction"
+			method="execute">
+			<result name="success" type="chain">displayPolls</result>
+		</action>
+		<action name="options" class="edu.iiitb.facebook.action.PollAction"
+			method="execute1">
+			<result name="success">/createoptions.jsp</result>
+		</action>
+
+		<action name="About_hype" class="edu.iiitb.facebook.action.statusAction"
+			method="tempReturnSuccess">
+			<result name="success" type="tiles">aboutLayout_hype</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+
+		<action name="createPollTemp" class="edu.iiitb.facebook.action.statusAction"
+			method="tempReturnSuccess">
+			<result name="success" type="tiles">pollLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="forgotPassword" class="edu.iiitb.facebook.action.ForgotPasswordAction"
+			method="forgotPassword">
+			<result name="success">ConfirmIdentity.jsp</result>
+			<result name="failure">forgotPassword.jsp</result>
+		</action>
+
+		<action name="sendEmail" class="edu.iiitb.facebook.action.EmailAction"
+			method="sendEmail">
+			<result name="success">CheckYourMail.jsp</result>
+		</action>
+		<action name="requestForResetPassword" class="edu.iiitb.facebook.action.ForgotPasswordAction"
+			method="checkCode">
+			<result name="success">resetPassword.jsp</result>
+		</action>
+		<action name="resetPassword" class="edu.iiitb.facebook.action.ForgotPasswordAction"
+			method="resetPassword">
+			<result name="success">/Login.jsp</result>
+		</action>
+
+		<action name="displayPolls" class="edu.iiitb.facebook.action.PollAction"
+			method="retreivePolls">
+			<result name="success" type="tiles">pollDisplay</result>
+			<result name="failure">forgotPassword.jsp</result>
+		</action>
+
+
+		<action name="voteForPoll" class="edu.iiitb.facebook.action.PollAction"
+			method="voteForPoll">
+			<result name="success" type="chain">displayPolls</result>
+			<result name="failure">forgotPassword.jsp</result>
+		</action>
+		
+	<!-- 	<action name="olderOwnPost" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="retrieveOwnNews">
+			<result name="success" type="tiles">olderOwnPost</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		
+		
+		<action name="olderOwnPost_hype" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="retrieveOwnNewsForHypelink">
+			<result name="success" type="tiles">olderOwnPost</result>
+			<result name="login">/Login.jsp</result>
+			</action>
+
+<action name="ownOlderPost" class="edu.iiitb.facebook.action.NewsFeedAction"
+			method="retrieveOwnNews">
+			<result name="success" type="chain">ownNews2</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+	
+	
+	
+
+ -->
+
+	</package>
+
+</struts>

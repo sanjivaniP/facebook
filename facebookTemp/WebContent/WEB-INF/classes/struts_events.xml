@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.convention.default.parent.package"
+		value="default" />
+
+	<package name="facebook_events"  extends="struts-default,json-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+			<result-type name="imageResult"
+				class="com.mkyong.image.result.CustomImageBytesResult" />
+
+		</result-types>
+		
+		<!-- ****************Surabhi's struts start ******************************************** -->
+		<action name="eventTemp" class="edu.iiitb.facebook.action.TempAction"
+			method="temp">
+			<result name="success" type="tiles">eventsLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+		<action name="eventCreateTemp" class="edu.iiitb.facebook.action.TempAction"
+			method="temp">
+			<result name="success" type="tiles">eventsCreateLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+		<action name="eventPageTemp" class="edu.iiitb.facebook.action.TempAction"
+			method="temp">
+			<result name="success" type="tiles">eventPageLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+		<action name="birthdayList" class="edu.iiitb.facebook.action.BirthdayAction"
+			method="birthdayNotification">
+			<result name="success">/birthday/birthdayList.jsp</result>
+		</action>
+		<action name="birthday" class="edu.iiitb.facebook.action.BirthdayAction"
+			method="birthdayNotification">
+			<result name="success">/birthday/birthdayNotification.jsp</result>
+
+		</action>
+
+		<action name="postWish" class="edu.iiitb.facebook.action.BirthdayAction"
+			method="postWish">
+			<result name="success">/birthday/birthdayList.jsp</result>
+		</action>
+		<action name="postWishEvent" class="edu.iiitb.facebook.action.BirthdayAction"
+			method="postWish">
+			<result name="success" type="chain">eventList</result>
+		</action>
+
+		<action name="eventList" class="edu.iiitb.facebook.action.EventAction"
+			method="eventDisplay">
+			<result name="success">/events/eventList.jsp</result>
+		</action>
+
+
+		<action name="eventPage" class="edu.iiitb.facebook.action.EventAction"
+			method="eventPageDisplay">
+			<result name="success">/events/eventPage.jsp</result>
+		</action>
+
+		<action name="createEvent" class="edu.iiitb.facebook.action.EventAction"
+			method="createEventDetails">
+			<result name="success" type="chain">eventPageTemp</result>
+		</action>
+
+		<action name="eventCreateEnter" class="edu.iiitb.facebook.action.EventAction"
+			method="eventCreateEnter">
+			<result name="success">/events/eventCreate.jsp</result>
+		</action>
+
+		<action name="inviteFriends"
+			class="edu.iiitb.facebook.action.EventInviteFriendsAction" method="inviteFriends">
+			<result name="success">/events/inviteFriends.jsp</result>
+		</action>
+		<action name="friendsInviteSelect"
+			class="edu.iiitb.facebook.action.EventInviteFriendsAction" method="inviteFriendsSelect">
+			<result name="success" type="chain">eventPageTemp</result>
+		</action>
+
+		<action name="joinStatusChange"
+			class="edu.iiitb.facebook.action.EventInviteFriendsAction" method="joinStatusChange">
+			<result name="success" type="chain">eventPageTemp</result>
+		</action>
+		<action name="calculateStatusEvent"
+			class="edu.iiitb.facebook.action.EventInviteFriendsAction" method="calculateStatusEvent">
+			<result name="success">/events/displayEventParticipants.jsp</result>
+		</action>
+		<action name="navLeftEvent" class="edu.iiitb.facebook.action.HeaderAction"
+			method="execute">
+			<result name="success">/navLeftEvent.jsp</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+
+
+		<!-- ******************************Surabhi's struts stop ********************************************** -->
+
+	</package>
+
+</struts>

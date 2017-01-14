@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="1000000" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.convention.default.parent.package"
+		value="default" />
+
+	<package name="facebook_about"  extends="struts-default,json-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+			<result-type name="imageResult"
+				class="com.mkyong.image.result.CustomImageBytesResult" />
+
+
+		</result-types>
+				<action name="image" class="edu.iiitb.facebook.action.ImageAction"
+			method="execute">
+			<result name="success" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">imageStream</param>
+				<param name="contentDisposition">image.jpeg</param>
+				<param name="bufferSize">1024</param>
+			</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		
+
+		
+		<action name="viewPhotosTemp" class="edu.iiitb.facebook.action.TempAction"
+			method="temp">
+			<result name="success" type="tiles">picLayout</result>
+		</action>
+
+		<action name="viewPhotos" class="edu.iiitb.facebook.action.picAction"
+			method="viewPhotos">
+			<result name="success">/picDisplay.jsp</result>
+		</action>
+
+
+		
+		<action name="profilePic" class="edu.iiitb.facebook.action.HeaderAction"
+			method="execute">
+			<result name="success">/profilePic.jsp</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+
+		<action name="profilePic_hype" class="edu.iiitb.facebook.action.HeaderAction"
+			method="executeForHyperlink">
+			<result name="success">/profilePic.jsp</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+
+		
+		<action name="image" class="edu.iiitb.facebook.action.ImageAction"
+			method="execute">
+			<result name="success" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">imageStream</param>
+				<param name="contentDisposition">image.jpeg</param>
+				<param name="bufferSize">1024</param>
+			</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+
+		
+		<action name="temp" class="edu.iiitb.facebook.action.TempAction"
+			method="temp">
+			<result name="success" type="tiles">homeLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+		<!-- ********************************Shubham Code Start *************************************** -->
+
+		<action name="editLocation1" class="edu.iiitb.facebook.action.placeAction"
+			method="editLocation1">
+			<result name="success" type="tiles">editLocation</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="editLocation2" class="edu.iiitb.facebook.action.placeAction"
+			method="editLocation2">
+			<result name="success" type="tiles">aboutLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="editWork1" class="edu.iiitb.facebook.action.workAndEducation"
+			method="editWork1">
+			<result name="success" type="tiles">editWork</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="editWork2" class="edu.iiitb.facebook.action.workAndEducation"
+			method="editWork2">
+			<result name="success" type="tiles">aboutLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="editEducation1" class="edu.iiitb.facebook.action.workAndEducation"
+			method="editEducation1">
+			<result name="success" type="tiles">editEducation</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+
+		<action name="editEducation2" class="edu.iiitb.facebook.action.workAndEducation"
+			method="editEducation2">
+			<result name="success" type="tiles">aboutLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<!-- **********************************Shubham code End********************************* -->
+
+<!-- ********************************DELETE CODE *************************************** -->
+<action name="deleteWork" class="edu.iiitb.facebook.action.workAndEducation"
+			method="deleteWork">
+			<result name="success" type="tiles">aboutLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+		
+		<action name="deleteEducation" class="edu.iiitb.facebook.action.workAndEducation"
+			method="deleteEducation">
+			<result name="success" type="tiles">aboutLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+		
+			<action name="deleteLocation" class="edu.iiitb.facebook.action.placeAction"
+			method="deleteLocation">
+			<result name="success" type="tiles">aboutLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action> 
+	<!-- 	
+<action name="deleteDOB" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="deleteBirthDate">
+			<result name="success" type="tiles">aboutLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+ -->
+<action name="deleteReligion" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="deleteReligion">
+			<result name="success" type="tiles">aboutLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+
+		<!-- ********************************Karodiya Code Start *************************************** -->
+		<!-- <action name="editGender1" class="edu.iiitb.facebook.action.basicInfoAction" 
+			method="editGender1"> <result name="success" type="tiles">editGender</result> 
+			<result name="success">/editGender.jsp</result> <result name="failure">/Login.jsp</result> 
+			</action> -->
+		<action name="editPhone1" class="edu.iiitb.facebook.action.contactInfoAction"
+			method="editPhone1">
+			<result name="success" type="tiles">editPhone</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+		<action name="editReligion1" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="editReligion1">
+			<result name="success" type="tiles">editReligion</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="editDOB1" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="editBirthDate1">
+			<result name="success" type="tiles">editBirthDate</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="editDOB2" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="editBirthDate2">
+			<result name="success" type="tiles">aboutLayout</result>
+
+
+		</action>
+		<action name="editIntrestedIn1" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="editInterests1">
+			<result name="success" type="tiles">editInterests</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		<action name="editIntrestedIn2" class="edu.iiitb.facebook.action.basicInfoAction"
+			method="editInterests2">
+			<result name="success" type="tiles">aboutLayout</result>
+
+
+		</action>
+		<!--********************************Karodiya Code END *************************************** -->
+		<action name="home1" class="edu.iiitb.facebook.action.TempAction"
+			method="temp">
+			<result name="success" type="tiles">fbLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+
+
+		
+		<action name="home" class="edu.iiitb.facebook.action.TempAction"
+			method="temp">
+			<result name="success" type="tiles">homeLayout</result>
+			<result name="failure">/Login.jsp</result>
+
+		</action>
+
+		
+
+	</package>
+
+</struts>
